@@ -5,7 +5,7 @@
 - **Live demo:** https://www.metastar.world/static/sdk-demo/paste.html
 - **Docs:** https://metastar.world/sdk/v1/docs
 - **Dashboard (get your key):** https://metastar.world/sdk/v1/dashboard
-- **Using three.js?** See [metastar-ai-npc-sdk-threejs](../metastar-ai-npc-sdk-threejs)
+- **Using three.js?** See https://github.com/singeryoa/metastar-ai-npc-sdk-threejs
 
 ## What you get
 
