@@ -1,0 +1,38 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metastar AI NPC SDK — Babylon.js example</title>
+  <style>html, body, canvas { margin: 0; width: 100%; height: 100%; display: block; }</style>
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+  <script src="https://metastar.world/static/sdk/v0/npc.js"></script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script>
+  var canvas = document.getElementById("c");
+  var engine = new BABYLON.Engine(canvas, true);
+  var scene = new BABYLON.Scene(engine);
+  var camera = new BABYLON.UniversalCamera("cam", new BABYLON.Vector3(0, 1.6, -2), scene);
+  camera.setTarget(new BABYLON.Vector3(0, 1.4, 3));
+  camera.attachControl(canvas, true);
+  new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
+  BABYLON.MeshBuilder.CreateGround("ground", { width: 20, height: 20 }, scene);
+  engine.runRenderLoop(function () { scene.render(); });
+  window.addEventListener("resize", function () { engine.resize(); });
+
+  MetastarNPC.init({
+    publicKey: "pk_live_xxxxxxxx",          // from the dashboard
+    scene: scene,
+    npcId: "npc_xxxxxxxx",                  // from the dashboard
+    position: { x: 0, y: 0, z: 3 },
+    rotationY: Math.PI,
+    getPlayerPosition: function () { return camera.position; },
+    onError: function (e) { console.error("NPC failed:", e.code, e.message); }
+  });
+</script>
+</body>
+</html>
